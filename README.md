@@ -15,7 +15,6 @@ Ansible Playbook for setting up the ELK/EFK Stack and Filebeat client on remote 
      * Deploys rsyslog if Fluentd is chosen over Logstash, picks up
        the same set of OpenStack-related logs in /var/log/*
      * All service ports can be modified in ```install/group_vars/all.yml```
-     * Optionally install [curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html)
      * Optionally install [Elastic X-Pack Suite](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html)
      * This is also available on [Ansible Galaxy](https://galaxy.ansible.com/sadsfae/ansible-elk/)
 
@@ -41,7 +40,6 @@ sysctl -p
    - Filebeat templating is focused around OpenStack service logs
    - Fluentd can be substituted for the default Logstash
      - Set ```logging_backend: fluentd``` in ```group_vars/all.yml```
-   - Install curator by setting ```install_curator_tool: true``` in ```install/group_vars/all.yml```
    - Install [Elastic X-Pack Suite](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html) for Elasticsearch, LogStash or Kibana via:
      - ```install_elasticsearch_xpack: true```
      - ```install_kibana_xpack: true```
@@ -108,14 +106,6 @@ git checkout 2.4
 │   ├── group_vars
 │   │   └── all.yml
 │   └── roles
-│       ├── curator
-│       │   ├── files
-│       │   │   └── curator.repo
-│       │   ├── tasks
-│       │   │   └── main.yml
-│       │   └── templates
-│       │       ├── curator-action.yml.j2
-│       │       └── curator-config.yml.j2
 │       ├── elasticsearch
 │       │   ├── files
 │       │   │   ├── elasticsearch.in.sh
